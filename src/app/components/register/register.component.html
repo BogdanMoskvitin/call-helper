@@ -1,0 +1,79 @@
+<div class="container">
+    <form [formGroup]="registerForm" (submit)="submit()">
+        <p>Регистрация</p>
+    
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Имя</mat-label>
+            <input matInput formControlName="first_name">
+            <mat-error *ngIf="registerForm.hasError('required', 'first_name')">
+                Это поле обязательно!
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Фамилия</mat-label>
+            <input matInput formControlName="last_name">
+            <mat-error *ngIf="registerForm.hasError('required', 'last_name')">
+                Это поле обязательно!
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Почта</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="registerForm.hasError('required', 'email')">
+                Это поле обязательно!
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Пароль</mat-label>
+            <input 
+                [type]="hide ? 'password' : 'text'" 
+                matInput 
+                formControlName="password"
+            >
+            <button 
+                type="button" 
+                mat-icon-button 
+                matSuffix 
+                (click)="hide = !hide" 
+                [attr.aria-label]="'Hide password'" 
+                [attr.aria-pressed]="hide"
+            >
+                <mat-icon>
+                    {{hide ? 'visibility_off' : 'visibility'}}
+                </mat-icon>
+            </button>
+            <mat-error *ngIf="registerForm.hasError('required', 'password')">
+                Это поле обязательно!
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Пароль</mat-label>
+            <input 
+                [type]="hide2 ? 'password' : 'text'" 
+                matInput 
+                formControlName="password2"
+            >
+            <button 
+                type="button" 
+                mat-icon-button 
+                matSuffix 
+                (click)="hide2 = !hide2" 
+                [attr.aria-label]="'Hide password'" 
+                [attr.aria-pressed]="hide2"
+            >
+                <mat-icon>
+                    {{hide2 ? 'visibility_off' : 'visibility'}}
+                </mat-icon>
+            </button>
+            <mat-error *ngIf="registerForm.hasError('required', 'password2')">
+                Это поле обязательно!
+            </mat-error>
+        </mat-form-field>
+    
+        <button mat-stroked-button color="primary" type="submit" [disabled]="registerForm.invalid">Зарегестрироваться</button>
+    </form>
+</div>
