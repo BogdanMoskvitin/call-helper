@@ -12,6 +12,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MainComponent } from './components/main/main.component';
 import { TokenInterceptor } from './classes/token.interceptor';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
     declarations: [
@@ -19,6 +23,7 @@ import { TokenInterceptor } from './classes/token.interceptor';
         LoginComponent,
         RegisterComponent,
         MainComponent,
+        ProfileComponent,
     ],
     imports: [
         BrowserModule,
@@ -30,6 +35,9 @@ import { TokenInterceptor } from './classes/token.interceptor';
         ReactiveFormsModule,
         MatInputModule,
         HttpClientModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatTabsModule,
     ],
     providers: [ { provide: HTTP_INTERCEPTORS, multi: true, useClass: TokenInterceptor }, ],
     bootstrap: [AppComponent],

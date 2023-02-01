@@ -1,6 +1,47 @@
-<button [routerLink]="['../login']">Login</button>
-<button [routerLink]="['./register']">Register</button>
-<button [routerLink]="['./main']">Main</button>
-<button (click)="logout()">Logout</button>
+<mat-toolbar color="primary">
+    <button 
+        mat-icon-button 
+        class="example-icon" 
+        aria-label="Example icon-button with menu icon"
+        (click)="drawer.toggle()"
+    >
+        <mat-icon>menu</mat-icon>
+    </button>
 
-<router-outlet></router-outlet>
+    <span>Call Helper</span>
+
+    <span class="example-spacer"></span>
+
+    <button 
+        mat-icon-button     
+        class="example-icon"                        
+        aria-label="Example icon-button with share icon"
+        [routerLink]="['/profile']"
+    >
+        <mat-icon>account_circle</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <div>
+            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/main']">Главная</a>
+        </div>
+
+        <div>
+            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/login']">Login</a>
+        </div>
+
+        <div>
+            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/register']">Register</a>
+        </div>
+
+        <div>
+            <a class="link" mat-button (click)="logout()">Logout</a>
+        </div>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+        <router-outlet></router-outlet>
+    </div>
+</mat-drawer-container>

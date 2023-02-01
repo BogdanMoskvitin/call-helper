@@ -1,0 +1,24 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.example-container {
+    height: calc(100vh - 64px);
+}
+
+.example-sidenav-content {
+    padding: 20px;
+}
+
+.example-sidenav {
+    padding: 20px;
+}
+
+.link {
+    width: 100%;
+}
+
+.active {
+    background: #3f51b5;
+    color: #fff;
+}
