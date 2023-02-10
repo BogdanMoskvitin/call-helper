@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Создание организации</h1>
+
+<form [formGroup]="organisationForm" (submit)="submit()">
+    <div mat-dialog-content>
+        <mat-form-field appearance="fill">
+            <mat-label>Название</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="organisationForm.hasError('required', 'name')">
+                Это поле обязательно!
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Отмена</button>
+        <button mat-stroked-button color="primary" type="submit" [disabled]="organisationForm.invalid">Создать</button>
+    </div>
+</form>

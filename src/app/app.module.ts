@@ -10,12 +10,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MainComponent } from './components/main/main.component';
+import { AddOrganisationDialogComponent, MainComponent } from './components/main/main.component';
 import { TokenInterceptor } from './classes/token.interceptor';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
     declarations: [
@@ -24,6 +26,7 @@ import { MatTabsModule } from '@angular/material/tabs';
         RegisterComponent,
         MainComponent,
         ProfileComponent,
+        AddOrganisationDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -38,6 +41,8 @@ import { MatTabsModule } from '@angular/material/tabs';
         MatToolbarModule,
         MatSidenavModule,
         MatTabsModule,
+        MatDialogModule,
+        MatCardModule,
     ],
     providers: [ { provide: HTTP_INTERCEPTORS, multi: true, useClass: TokenInterceptor }, ],
     bootstrap: [AppComponent],

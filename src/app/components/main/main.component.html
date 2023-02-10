@@ -1,1 +1,7 @@
-<p>main works!</p>
+<button mat-stroked-button color="primary" (click)="openAddOrganisationDialog()">Создать организацию</button>
+
+<h3>Список организаций</h3>
+
+<mat-card *ngFor="let organisation of organisationsList">
+    <mat-card-content>{{organisation.name}}</mat-card-content>
+</mat-card>
