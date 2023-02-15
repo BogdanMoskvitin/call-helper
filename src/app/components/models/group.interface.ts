@@ -10,8 +10,15 @@ export interface IGroup {
     name: string;
     manager: {
         id: number;
-        username: string;
-        full_name: string;
+        user: {
+          id: number;
+          username: string;
+          full_name: string;
+        };
+        position: {
+          code: string;
+          name: string;
+        };
     };
     organisation: {
         id: number;
