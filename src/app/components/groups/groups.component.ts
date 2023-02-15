@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { GroupService } from 'src/app/services/group.service';
@@ -11,7 +11,7 @@ import { IOrganisation } from '../models/organisation.interface';
     templateUrl: './groups.component.html',
     styleUrls: ['./groups.component.scss']
 })
-export class GroupsComponent implements OnInit {
+export class GroupsComponent implements OnInit, OnChanges {
     displayedColumns: string[] = ['name', 'manager', 'pax', 'created_at'];
     groupsList: IGroup[] = [];
     filters = {
@@ -28,7 +28,9 @@ export class GroupsComponent implements OnInit {
         private groupService: GroupService,
     ) { }
 
-    ngOnInit(): void {
+    ngOnInit(): void {}
+
+    ngOnChanges(): void {
         this.getGroupsList();
     }
 
