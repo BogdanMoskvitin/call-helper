@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Создание группы</h1>
+
+<form [formGroup]="groupForm" (submit)="submit()">
+    <div mat-dialog-content>
+        <div class="form">
+            <mat-form-field appearance="fill">
+                <mat-label>Менеджеры</mat-label>
+                <mat-select formControlName="manager">
+                    <mat-option 
+                        *ngFor="let manager of managersList" 
+                        [value]="manager?.id"
+                    >
+                        {{manager?.user?.full_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field appearance="fill">
+                <mat-label>Название</mat-label>
+                <input matInput formControlName="name">
+                <mat-error *ngIf="groupForm.hasError('required', 'name')">
+                    Это поле обязательно!
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Отмена</button>
+        <button mat-stroked-button color="primary" type="submit" [disabled]="groupForm.invalid">Создать</button>
+    </div>
+</form>

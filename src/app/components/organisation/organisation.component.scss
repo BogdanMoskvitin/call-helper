@@ -1,0 +1,21 @@
+.example-card {
+    max-width: 400px;
+    margin: 20px;
+}
+
+::ng-deep .mat-card-header-text {
+    margin: 0px !important;
+}
+
+.title {
+    margin: 0;
+    font-size: 20px;
+}
+
+.flex {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
