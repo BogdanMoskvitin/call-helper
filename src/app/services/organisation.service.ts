@@ -27,6 +27,6 @@ export class OrganisationService {
     }
 
     editOrganisation(id: number, data: IOrganisationRequest): Observable<IOrganisationResponse> {
-        return this.http.patch<IOrganisationResponse>(environment.api + 'organisations/' + id, data);
+        return this.http.patch<IOrganisationResponse>(environment.api + 'organisations/' + id + '/', data);
     }
 }
