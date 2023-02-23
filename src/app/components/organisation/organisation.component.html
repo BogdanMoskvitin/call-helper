@@ -1,26 +1,31 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <div class="flex">
+            <p class="title">
+                Организация {{ organisation?.name }}
+            </p>
+    
+            <button mat-stroked-button color="primary" (click)="openEditOrganisationDialog()">
+                Редактировать
+            </button>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Руководитель: {{ organisation?.director?.full_name }}</p>
+        <p>Кол-во сотрудников: {{ organisation?.pax }}</p>
+        <p>Кол-во групп: {{ organisation?.groups_count }}</p>
+        <p>Зарегестрирована: {{ organisation?.created_at | date: 'dd.MM.YYYY hh:mm' }}</p>
+    </mat-card-content>
+</mat-card>
+
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
-    <mat-tab label="Основное">
-        <mat-card class="example-card">
-            <mat-card-header>
-                <div class="flex">
-                    <p class="title">
-                        Организация {{ organisation?.name }}
-                    </p>
-            
-                    <button mat-stroked-button color="primary" (click)="openEditOrganisationDialog()">
-                        Редактировать
-                    </button>
-                </div>
-            </mat-card-header>
-            <mat-card-content>
-                <p>Руководитель: {{ organisation?.director?.full_name }}</p>
-                <p>Кол-во сотрудников: {{ organisation?.pax }}</p>
-                <p>Кол-во групп: {{ organisation?.groups_count }}</p>
-                <p>Зарегестрирована: {{ organisation?.created_at | date: 'dd.MM.YYYY hh:mm' }}</p>
-            </mat-card-content>
-        </mat-card>
-    </mat-tab>
     <mat-tab label="Группы">
         <app-groups [organisation]="organisation"></app-groups>
+    </mat-tab>
+    <mat-tab label="Сотрудники">
+        
+    </mat-tab>
+    <mat-tab label="Заявки">
+        
     </mat-tab>
 </mat-tab-group>
