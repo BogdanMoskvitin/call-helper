@@ -1,0 +1,77 @@
+<h1 mat-dialog-title>Создание корпоративного аккаунта</h1>
+
+<p mat-dialog-content>Корпоративный аккаунт управляется организацией. Пользователь не сможет менять персональные данные, переходить в другие организации. После создания не забудьте передать данные почта/пароль человеку, который будет использовать корпоративный аккаунт. Сменить пароль пользователь сможет самостоятельно после первого входа в систему</p>
+
+<form [formGroup]="employeeForm" (submit)="submit()">
+    <div mat-dialog-content>
+        <div class="form">
+            <mat-form-field appearance="fill">
+                <mat-label>Имя</mat-label>
+                <input matInput formControlName="first_name">
+                <mat-error *ngIf="employeeForm.hasError('required', 'first_name')">
+                    Это поле обязательно!
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Фамилия</mat-label>
+                <input matInput formControlName="last_name">
+                <mat-error *ngIf="employeeForm.hasError('required', 'last_name')">
+                    Это поле обязательно!
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Почта</mat-label>
+                <input matInput formControlName="email">
+                <mat-error *ngIf="employeeForm.hasError('required', 'email')">
+                    Это поле обязательно!
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Должность</mat-label>
+                <mat-select formControlName="position">
+                    <mat-option 
+                        *ngFor="let position of positionsList" 
+                        [value]="position?.code"
+                    >
+                        {{position?.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="employeeForm.hasError('required', 'position')">
+                    Это поле обязательно!
+                </mat-error>
+            </mat-form-field>
+    
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Пароль</mat-label>
+                <input 
+                    [type]="hide ? 'password' : 'text'" 
+                    matInput 
+                    formControlName="password"
+                >
+                <button 
+                    type="button" 
+                    mat-icon-button 
+                    matSuffix 
+                    (click)="hide = !hide" 
+                    [attr.aria-label]="'Hide password'" 
+                    [attr.aria-pressed]="hide"
+                >
+                    <mat-icon>
+                        {{hide ? 'visibility_off' : 'visibility'}}
+                    </mat-icon>
+                </button>
+                <mat-error *ngIf="employeeForm.hasError('required', 'password')">
+                    Это поле обязательно!
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Отмена</button>
+        <button mat-stroked-button color="primary" type="submit" [disabled]="employeeForm.invalid">Создать</button>
+    </div>
+</form>

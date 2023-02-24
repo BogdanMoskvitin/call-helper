@@ -23,6 +23,7 @@ import { EditOrganisationDialogComponent, OrganisationComponent } from './compon
 import { MatCardModule } from '@angular/material/card';
 import { AddGroupDialogComponent, GroupsComponent } from './components/groups/groups.component';
 import { MatSelectModule } from '@angular/material/select';
+import { AddEmployeeDialogComponent, EmployeesComponent } from './components/employees/employees.component';
 
 @NgModule({
     declarations: [
@@ -37,6 +38,8 @@ import { MatSelectModule } from '@angular/material/select';
         EditOrganisationDialogComponent,
         GroupsComponent,
         AddGroupDialogComponent,
+        EmployeesComponent,
+        AddEmployeeDialogComponent,
     ],
     imports: [
         BrowserModule,

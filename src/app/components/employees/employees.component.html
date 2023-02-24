@@ -1,0 +1,68 @@
+<div class="container">
+    <button mat-stroked-button color="primary" (click)="openAddEmployeeDialog()" *ngIf="organisation?.can_manage">Создать корпоративный аккаунт</button>
+
+    <h3>Список сотрудников</h3>
+    
+    <div class="filters">
+        <button class="filter" (click)="filter('all')" [class]="filters.all ? 'filter-active' : ''">Все</button>
+        <button class="filter" (click)="filter('corporate')" [class]="filters.corporate ? 'filter-active' : ''">Корпоративные</button>
+        <button class="filter" (click)="filter('ordinary')" [class]="filters.ordinary ? 'filter-active' : ''">Обычные</button>
+    </div>
+
+    <mat-form-field class="example-full-width" appearance="fill" style="width: 250px; margin-top: 20px;">
+        <mat-label>Поиск по имени</mat-label>
+        <input type="text" matInput (keyup)="inputName($event)" [formControl]="controlName">
+    </mat-form-field>
+    
+    <table mat-table [dataSource]="employeesList" class="mat-elevation-z8">
+        <!-- Name -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Имя </th>
+            <td mat-cell *matCellDef="let element" class="table__link" [routerLink]="['../employee', element.id]"> {{element.user.full_name}} </td>
+        </ng-container>
+    
+        <!-- Position -->
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> Должность </th>
+            <td mat-cell *matCellDef="let element"> {{element.position.name}} </td>
+        </ng-container>
+    
+        <!-- Email -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Почта </th>
+            <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
+        </ng-container>
+
+        <!-- Phone -->
+        <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef> Телефон </th>
+            <td mat-cell *matCellDef="let element"> 
+                {{element.user.phone_number}} 
+                <span *ngIf="!element.user.phone_number">-</span>
+            </td>
+        </ng-container>
+
+        <!-- Corporate account -->
+        <ng-container matColumnDef="corporateAccount">
+            <th mat-header-cell *matHeaderCellDef> Корпоративный аккаунт </th>
+            <td mat-cell *matCellDef="let element"> 
+                <span *ngIf="element.user.is_corporate_account">+</span>
+                <span *ngIf="!element.user.is_corporate_account">-</span>
+            </td>
+        </ng-container>
+    
+        <!-- Date joined -->
+        <ng-container matColumnDef="dateJoined">
+            <th mat-header-cell *matHeaderCellDef> Дата присоединения </th>
+            <td mat-cell *matCellDef="let element"> {{element.date_joined | date: 'dd.MM.YYYY hh:mm'}} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr 
+            mat-row 
+            *matRowDef="let row; columns: displayedColumns;"
+        ></tr>
+    </table>
+    
+    <h3 *ngIf="!employeesList.length">Список пуст</h3>
+</div>
