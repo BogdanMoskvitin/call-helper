@@ -2,12 +2,12 @@
     <button mat-stroked-button color="primary" (click)="openAddGroupDialog()" *ngIf="organisation?.can_manage">Создать группу</button>
 
     <h3>Список групп</h3>
-    
-    <div class="filters">
-        <button class="filter" (click)="filter('all')" [class]="filters.all ? 'filter-active' : ''">Все</button>
-        <button class="filter" (click)="filter('my')" [class]="filters.my ? 'filter-active' : ''">Мои</button>
-        <button class="filter" (click)="filter('managed')" [class]="filters.managed ? 'filter-active' : ''">Управляемые</button>
-    </div>
+
+    <mat-button-toggle-group>
+        <mat-button-toggle checked (click)="filter('all')">Все</mat-button-toggle>
+        <mat-button-toggle (click)="filter('my')">Мои</mat-button-toggle>
+        <mat-button-toggle (click)="filter('managed')">Управляемые</mat-button-toggle>
+    </mat-button-toggle-group>
     
     <table mat-table [dataSource]="groupsList" class="mat-elevation-z8">
         <!-- Name -->

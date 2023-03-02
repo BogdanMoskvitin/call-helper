@@ -12,11 +12,6 @@ import { IOrganisation } from 'src/app/models/organisation.interface';
 export class OrganisationsComponent implements OnInit {
     displayedColumns: string[] = ['name', 'director', 'pax', 'groups_count', 'created_at'];
     organisationsList: IOrganisation[] = [];
-    filters = {
-        all: true,
-        managed: false,
-        convent: false,
-    }
 
     constructor(
         public dialog: MatDialog,
@@ -46,29 +41,14 @@ export class OrganisationsComponent implements OnInit {
             this.organisationService.getOrganisationsList().subscribe(res => {
                 this.organisationsList = res
             })
-            this.filters = {
-                all: true,
-                managed: false,
-                convent: false,
-            }
         } else if(status == 'managed') {
             this.organisationService.getOrganisationsList(true).subscribe(res => {
                 this.organisationsList = res
             })
-            this.filters = {
-                all: false,
-                managed: true,
-                convent: false,
-            }
         } else if(status == 'convent') {
             this.organisationService.getOrganisationsList(false).subscribe(res => {
                 this.organisationsList = res
             })
-            this.filters = {
-                all: false,
-                managed: false,
-                convent: true,
-            }
         }
     }
 }

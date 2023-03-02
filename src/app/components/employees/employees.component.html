@@ -2,14 +2,14 @@
     <button mat-stroked-button color="primary" (click)="openAddEmployeeDialog()" *ngIf="organisation?.can_manage">Создать корпоративный аккаунт</button>
 
     <h3>Список сотрудников</h3>
-    
-    <div class="filters">
-        <button class="filter" (click)="filter('all')" [class]="filters.all ? 'filter-active' : ''">Все</button>
-        <button class="filter" (click)="filter('corporate')" [class]="filters.corporate ? 'filter-active' : ''">Корпоративные</button>
-        <button class="filter" (click)="filter('ordinary')" [class]="filters.ordinary ? 'filter-active' : ''">Обычные</button>
-    </div>
 
-    <mat-form-field class="example-full-width" appearance="fill" style="width: 250px; margin-top: 20px;">
+    <mat-button-toggle-group>
+        <mat-button-toggle checked (click)="filter('all')">Все</mat-button-toggle>
+        <mat-button-toggle (click)="filter('corporate')">Корпоративные</mat-button-toggle>
+        <mat-button-toggle (click)="filter('ordinary')">Обычные</mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <mat-form-field class="example-full-width" appearance="fill" style="width: 250px; margin-top: 20px; display: block;">
         <mat-label>Поиск по имени</mat-label>
         <input type="text" matInput (keyup)="inputName($event)" [formControl]="controlName">
     </mat-form-field>

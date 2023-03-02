@@ -14,11 +14,7 @@ import { IOrganisation } from 'src/app/models/organisation.interface';
 export class EmployeesComponent implements OnInit, OnChanges {
     displayedColumns: string[] = ['name', 'position', 'email', 'phone', 'corporateAccount', 'dateJoined'];
     employeesList: IEmployee[] = [];
-    filters = {
-        all: true,
-        corporate: false,
-        ordinary: false,
-    }
+    
     currentFilter: {param: string, value: boolean} | undefined = undefined;
     currentSearch: {param: string, value: string} | undefined = undefined;
 
@@ -61,31 +57,16 @@ export class EmployeesComponent implements OnInit, OnChanges {
                 this.employeeService.getEmployeesList(this.organisation.id, this.currentFilter, this.currentSearch).subscribe(res => {
                     this.employeesList = res
                 })
-                this.filters = {
-                    all: true,
-                    corporate: false,
-                    ordinary: false,
-                }
             } else if(status == 'corporate') {
                 this.currentFilter = {param: 'only_corporate', value: true}
                 this.employeeService.getEmployeesList(this.organisation.id, this.currentFilter, this.currentSearch).subscribe(res => {
                     this.employeesList = res
                 })
-                this.filters = {
-                    all: false,
-                    corporate: true,
-                    ordinary: false,
-                }
             } else if(status == 'ordinary') {
                 this.currentFilter = {param: 'only_corporate', value: false}
                 this.employeeService.getEmployeesList(this.organisation.id, this.currentFilter, this.currentSearch).subscribe(res => {
                     this.employeesList = res
                 })
-                this.filters = {
-                    all: false,
-                    corporate: false,
-                    ordinary: true,
-                }
             }
         }
     }

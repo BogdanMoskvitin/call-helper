@@ -6,36 +6,6 @@ h3 {
     margin: 10px 0;
 }
 
-.filters {
-    margin-bottom: 15px;
-    
-    :first-child {
-        border-radius: 4px 0 0 4px;
-    }
-
-    :last-child {
-        border-radius: 0 4px 4px 0;
-        border-right: 1px solid rgba(0,0,0,.12);
-    }
-}
-
-.filter {
-    box-sizing: border-box;
-    color: #3f51b5;
-    font-size: 14px;
-    font-weight: 500;
-    background: none;
-    border: 1px solid rgba(0,0,0,.12);
-    border-right: none;
-    padding: 8px 15px;
-    cursor: pointer;
-}
-
-.filter-active {
-    background: #3f51b5;
-    color: #fff;
-}
-
 th, td {
     font-size: 14px;
 }
@@ -56,4 +26,8 @@ th, td {
 .form {
     display: flex;
     flex-direction: column;
+}
+
+mat-button-toggle-group {
+    margin-bottom: 20px;
 }

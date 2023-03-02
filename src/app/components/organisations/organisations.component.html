@@ -2,11 +2,11 @@
 
 <h3>Список организаций</h3>
 
-<div class="filters">
-    <button class="filter" (click)="filter('all')" [class]="filters.all ? 'filter-active' : ''">Все</button>
-    <button class="filter" (click)="filter('managed')" [class]="filters.managed ? 'filter-active' : ''">Управляемые</button>
-    <button class="filter" (click)="filter('convent')" [class]="filters.convent ? 'filter-active' : ''">Обычные</button>
-</div>
+<mat-button-toggle-group>
+    <mat-button-toggle checked (click)="filter('all')">Все</mat-button-toggle>
+    <mat-button-toggle (click)="filter('managed')">Управляемые</mat-button-toggle>
+    <mat-button-toggle (click)="filter('convent')">Обычные</mat-button-toggle>
+</mat-button-toggle-group>
 
 <table mat-table [dataSource]="organisationsList" class="mat-elevation-z8">
     <!-- Name -->

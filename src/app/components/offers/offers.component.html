@@ -6,12 +6,12 @@
     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
         <mat-tab label="Входящие">
             <div class="container">
-                <div class="filters">
-                    <button class="filter" (click)="filterReceived('all')" [class]="receivedFilters.all ? 'filter-active' : ''">Все</button>
-                    <button class="filter" (click)="filterReceived('unknown')" [class]="receivedFilters.unknown ? 'filter-active' : ''">На рассмотрении</button>
-                    <button class="filter" (click)="filterReceived('accept')" [class]="receivedFilters.accept ? 'filter-active' : ''">Принятые</button>
-                    <button class="filter" (click)="filterReceived('reject')" [class]="receivedFilters.reject ? 'filter-active' : ''">Отклоненные</button>
-                </div>
+                <mat-button-toggle-group>
+                    <mat-button-toggle checked (click)="filterReceived('all')">Все</mat-button-toggle>
+                    <mat-button-toggle (click)="filterReceived('unknown')">На рассмотрении</mat-button-toggle>
+                    <mat-button-toggle (click)="filterReceived('accept')">Принятые</mat-button-toggle>
+                    <mat-button-toggle (click)="filterReceived('reject')">Отклоненные</mat-button-toggle>
+                </mat-button-toggle-group>
                 
                 <table mat-table [dataSource]="offersReceivedList" class="mat-elevation-z8">
                     <!-- User -->
@@ -89,12 +89,12 @@
         </mat-tab>
         <mat-tab label="Исходящие">
             <div class="container">
-                <div class="filters">
-                    <button class="filter" (click)="filterSent('all')" [class]="sentFilters.all ? 'filter-active' : ''">Все</button>
-                    <button class="filter" (click)="filterSent('unknown')" [class]="sentFilters.unknown ? 'filter-active' : ''">На рассмотрении</button>
-                    <button class="filter" (click)="filterSent('accept')" [class]="sentFilters.accept ? 'filter-active' : ''">Принятые</button>
-                    <button class="filter" (click)="filterSent('reject')" [class]="sentFilters.reject ? 'filter-active' : ''">Отклоненные</button>
-                </div>
+                <mat-button-toggle-group>
+                    <mat-button-toggle checked (click)="filterSent('all')">Все</mat-button-toggle>
+                    <mat-button-toggle (click)="filterSent('unknown')">На рассмотрении</mat-button-toggle>
+                    <mat-button-toggle (click)="filterSent('accept')">Принятые</mat-button-toggle>
+                    <mat-button-toggle (click)="filterSent('reject')">Отклоненные</mat-button-toggle>
+                </mat-button-toggle-group>
                 
                 <table mat-table [dataSource]="offersSentList" class="mat-elevation-z8">
                     <!-- User -->

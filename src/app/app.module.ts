@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { AddEmployeeDialogComponent, EmployeesComponent } from './components/employees/employees.component';
 import { AddOfferDialogComponent, OffersComponent } from './components/offers/offers.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
     declarations: [
@@ -63,6 +64,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
         MatCardModule,
         MatSelectModule,
         MatAutocompleteModule,
+        MatButtonToggleModule,
     ],
     providers: [ { provide: HTTP_INTERCEPTORS, multi: true, useClass: TokenInterceptor }, ],
     bootstrap: [AppComponent],
