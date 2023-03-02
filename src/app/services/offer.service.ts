@@ -40,12 +40,10 @@ export class OfferService {
     }
 
     acceptOffer(idOrganisation: number, idOffer: number): Observable<null> {
-        let queryParams = new HttpParams().append('accept', true);
-        return this.http.patch<null>(environment.api + 'organisations/' + idOrganisation + '/offers/' + idOffer + '/', {params: queryParams})
+        return this.http.patch<null>(environment.api + 'organisations/' + idOrganisation + '/offers/' + idOffer + '/', {accept: true})
     }
 
     rejectOffer(idOrganisation: number, idOffer: number): Observable<null> {
-        let queryParams = new HttpParams().append('accept', false);
-        return this.http.patch<null>(environment.api + 'organisations/' + idOrganisation + '/offers/' + idOffer + '/', {params: queryParams})
+        return this.http.patch<null>(environment.api + 'organisations/' + idOrganisation + '/offers/' + idOffer + '/', {accept: false})
     }
 }
