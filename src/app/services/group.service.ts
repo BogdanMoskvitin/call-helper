@@ -2,8 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IGroup, IGroupRequest, IGroupResponse } from '../components/models/group.interface';
-import { IManager } from '../components/models/manager.interface';
+import { IGroup, IGroupRequest, IGroupResponse } from 'src/app/models/group.interface';
+import { IManager } from 'src/app/models/manager.interface';
 
 @Injectable({
   providedIn: 'root',

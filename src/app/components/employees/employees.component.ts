@@ -2,9 +2,9 @@ import { Component, OnInit, Input, Inject, OnChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EmployeeService } from 'src/app/services/employee.service';
-import { IEmployee } from '../models/employee.interface';
-import { IPosition } from '../models/position.interface';
-import { IOrganisation } from '../models/organisation.interface';
+import { IEmployee } from 'src/app/models/employee.interface';
+import { IPosition } from 'src/app/models/position.interface';
+import { IOrganisation } from 'src/app/models/organisation.interface';
 
 @Component({
     selector: 'app-employees',

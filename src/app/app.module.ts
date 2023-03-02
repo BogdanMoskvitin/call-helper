@@ -24,6 +24,8 @@ import { MatCardModule } from '@angular/material/card';
 import { AddGroupDialogComponent, GroupsComponent } from './components/groups/groups.component';
 import { MatSelectModule } from '@angular/material/select';
 import { AddEmployeeDialogComponent, EmployeesComponent } from './components/employees/employees.component';
+import { AddOfferDialogComponent, OffersComponent } from './components/offers/offers.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
     declarations: [
@@ -40,6 +42,8 @@ import { AddEmployeeDialogComponent, EmployeesComponent } from './components/emp
         AddGroupDialogComponent,
         EmployeesComponent,
         AddEmployeeDialogComponent,
+        OffersComponent,
+        AddOfferDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -58,6 +62,7 @@ import { AddEmployeeDialogComponent, EmployeesComponent } from './components/emp
         MatTableModule,
         MatCardModule,
         MatSelectModule,
+        MatAutocompleteModule,
     ],
     providers: [ { provide: HTTP_INTERCEPTORS, multi: true, useClass: TokenInterceptor }, ],
     bootstrap: [AppComponent],

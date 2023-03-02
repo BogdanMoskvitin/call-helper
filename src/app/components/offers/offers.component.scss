@@ -1,0 +1,62 @@
+.container {
+    margin-top: 20px;
+}
+
+h3 {
+    margin: 10px 0;
+}
+
+.filters {
+    margin-bottom: 15px;
+    
+    :first-child {
+        border-radius: 4px 0 0 4px;
+    }
+
+    :last-child {
+        border-radius: 0 4px 4px 0;
+        border-right: 1px solid rgba(0,0,0,.12);
+    }
+}
+
+.filter {
+    box-sizing: border-box;
+    color: #3f51b5;
+    font-size: 14px;
+    font-weight: 500;
+    background: none;
+    border: 1px solid rgba(0,0,0,.12);
+    border-right: none;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.filter-active {
+    background: #3f51b5;
+    color: #fff;
+}
+
+th, td {
+    font-size: 14px;
+}
+
+.table__link {
+    color: #3f51b5;
+    cursor: pointer;
+}
+
+.green {
+    background: #81C784;
+}
+
+.blue {
+    background: #64B5F6;
+}
+
+.form {
+    display: flex;
+}
+
+.list {
+    margin: 20px 0 0 20px;
+}

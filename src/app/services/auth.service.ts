@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ILogin, IRegister } from '../components/models/auth.interface';
+import { ILogin, IRegister } from 'src/app/models/auth.interface';
 import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 

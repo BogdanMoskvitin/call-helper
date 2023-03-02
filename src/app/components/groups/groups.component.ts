@@ -2,9 +2,9 @@ import { Component, OnInit, Input, Inject, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { GroupService } from 'src/app/services/group.service';
-import { IGroup } from '../models/group.interface';
-import { IManager } from '../models/manager.interface';
-import { IOrganisation } from '../models/organisation.interface';
+import { IGroup } from 'src/app/models/group.interface';
+import { IManager } from 'src/app/models/manager.interface';
+import { IOrganisation } from 'src/app/models/organisation.interface';
 
 @Component({
     selector: 'app-groups',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { OrganisationService } from 'src/app/services/organisation.service';
-import { IOrganisation } from '../models/organisation.interface';
+import { IOrganisation } from 'src/app/models/organisation.interface';
 
 @Component({
     selector: 'app-organisations',

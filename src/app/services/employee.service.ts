@@ -2,8 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IEmployee, IEmployeeRequest, IEmployeeResponse } from '../components/models/employee.interface';
-import { IPosition } from '../components/models/position.interface';
+import { IEmployee, IEmployeeRequest, IEmployeeResponse } from 'src/app/models/employee.interface';
+import { IPosition } from 'src/app/models/position.interface';
 
 @Injectable({
   providedIn: 'root',

@@ -4,7 +4,7 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dial
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { OrganisationService } from 'src/app/services/organisation.service';
-import { IOrganisation } from '../models/organisation.interface';
+import { IOrganisation } from 'src/app/models/organisation.interface';
 
 @Component({
     selector: 'app-organisation',

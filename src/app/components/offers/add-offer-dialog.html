@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Создание заявки</h1>
+
+<p mat-dialog-content>Создавая заявку, Вы приглашаете пользователя в организацию. Если пользователь примет заявку, то он автоматически станет сотрудником организации.</p>
+
+<div mat-dialog-content>
+    <div class="form">
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 500px; margin-top: 20px;">
+            <mat-label>Поиск по имени</mat-label>
+            <input type="text" matInput [matAutocomplete]="auto" (keyup)="inputName($event)" [formControl]="controlName">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let user of usersList" [value]="user.full_name + ' (' + user.username + ')'" (click)="sendUser(user)">
+                    {{user.full_name}} ({{user.username}})
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <div class="list">
+            <p *ngFor="let user of selectUsers">
+                {{user.full_name}} ({{user.username}})
+            </p>
+        </div>
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Отмена</button>
+    <button mat-stroked-button color="primary" [disabled]="!isValid" (click)="submit()">Создать</button>
+</div>
