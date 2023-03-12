@@ -1,0 +1,27 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <div class="flex">
+            <p class="title">
+                Группа {{ group?.name }}
+            </p>
+    
+            <button mat-stroked-button color="primary" (click)="openEditGroupDialog()">
+                Редактировать
+            </button>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Руководитель: {{ group?.manager?.user?.full_name }}</p>
+        <p>Кол-во сотрудников: {{ group?.pax }}</p>
+        <p>Зарегестрирована: {{ group?.created_at | date: 'dd.MM.YYYY hh:mm' }}</p>
+    </mat-card-content>
+</mat-card>
+
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+    <mat-tab label="Участники">
+        <app-members [idGroup]="id"></app-members>
+    </mat-tab>
+    <mat-tab label="Смены">
+        <app-breaks [idGroup]="id"></app-breaks>
+    </mat-tab>
+</mat-tab-group>

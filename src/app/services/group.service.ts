@@ -19,6 +19,10 @@ export class GroupService {
         return this.http.get<IGroup[]>(environment.api + 'organisations/groups/?organisation=' + idOrganisation, {params: queryParams});
     }
 
+    getGroup(idGroup: number): Observable<IGroup> {
+        return this.http.get<IGroup>(environment.api + 'organisations/groups/' + idGroup + '/');
+    }
+
     addGroup(data: IGroupRequest): Observable<IGroupResponse> {
         return this.http.post<IGroupResponse>(environment.api + 'organisations/groups/', data);
     }

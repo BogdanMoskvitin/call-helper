@@ -27,6 +27,11 @@ import { AddEmployeeDialogComponent, EmployeesComponent } from './components/emp
 import { AddOfferDialogComponent, OffersComponent } from './components/offers/offers.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ChartComponent } from './components/chart/chart.component';
+import { GroupComponent } from './components/group/group.component';
+import { MembersComponent } from './components/members/members.component';
+import { BreaksComponent } from './components/breaks/breaks.component';
+import { BreakComponent } from './components/break/break.component';
 
 @NgModule({
     declarations: [
@@ -45,6 +50,11 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
         AddEmployeeDialogComponent,
         OffersComponent,
         AddOfferDialogComponent,
+        ChartComponent,
+        GroupComponent,
+        MembersComponent,
+        BreaksComponent,
+        BreakComponent,
     ],
     imports: [
         BrowserModule,

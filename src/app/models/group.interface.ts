@@ -7,6 +7,12 @@ export interface IGroupsList {
 
 export interface IGroup {
     id: number;
+    breaks_info: {
+        min_active: number;
+        break_start: string;
+        break_end: string;
+        break_max_duration: number;
+    };
     name: string;
     manager: {
         id: number;

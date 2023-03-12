@@ -1,0 +1,20 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <div class="flex">
+            <p class="title">
+                Дата {{ break?.date | date: 'dd.MM.YYYY hh:mm' }}
+            </p>
+    
+            <button mat-stroked-button color="primary" (click)="openEditBreakDialog()">
+                Редактировать
+            </button>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Группа: {{ break?.group?.name }}</p>
+        <p>Организация: {{ break?.group?.organisation?.name }}</p>
+        <p>Руководитель: {{ break?.group?.manager?.user?.full_name }}</p>
+        <p>Должность: {{ break?.group?.manager?.position?.name }}</p>
+        <p>Зарегестрирована: {{ break?.break_start }} - {{ break?.break_end }}</p>
+    </mat-card-content>
+</mat-card>
