@@ -3,6 +3,7 @@ import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { IBreak } from 'src/app/models/break.interface';
 import { BreakService } from 'src/app/services/break.service';
+import { ISchedule } from 'src/app/models/schedule.interface';
 
 @Component({
     selector: 'app-break',
@@ -12,6 +13,7 @@ import { BreakService } from 'src/app/services/break.service';
 export class BreakComponent implements OnInit {
     id!: number;
     break: IBreak | null = null;
+    schedule: ISchedule[] | null = null;
 
     constructor(
         private route: ActivatedRoute,
@@ -25,6 +27,7 @@ export class BreakComponent implements OnInit {
         .subscribe(data => {
             this.id = +data;
             this.getBreak();
+            this.getSchedule();
         });
     }
 
@@ -35,4 +38,10 @@ export class BreakComponent implements OnInit {
     }
 
     openEditBreakDialog(): void {}
+
+    getSchedule(): void {
+        this.breakService.getSchedule(this.id).subscribe(res => {
+            this.schedule = res;
+        })
+    }
 }

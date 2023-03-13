@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IBreak, IBreaksList } from '../models/break.interface';
+import { ISchedule } from '../models/schedule.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,5 +19,9 @@ export class BreakService {
 
     getBreak(idBreak: number): Observable<IBreak> {
         return this.http.get<IBreak>(environment.api + 'breaks/replacements/' + idBreak + '/');
+    }
+
+    getSchedule(idBreak: number): Observable<ISchedule[]> {
+        return this.http.get<ISchedule[]>(environment.api + 'breaks/replacements/' + idBreak + '/schedule/');
     }
 }
