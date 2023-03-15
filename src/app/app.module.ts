@@ -35,6 +35,7 @@ import { BreakComponent } from './components/break/break.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 
 @NgModule({
     declarations: [
@@ -82,6 +83,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
         MatDatepickerModule,
         MatNativeDateModule,
         MatSlideToggleModule,
+        NgxMatTimepickerModule,
     ],
     providers: [ 
         { provide: HTTP_INTERCEPTORS, multi: true, useClass: TokenInterceptor }, 

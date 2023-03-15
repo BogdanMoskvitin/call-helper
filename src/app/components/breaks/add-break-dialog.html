@@ -23,27 +23,61 @@
                 </mat-select>
             </mat-form-field>
 
-            <!-- <mat-form-field>
+            <mat-form-field>
                 <input 
                     matInput
-                    name="selected_time_B"
-                    format="24"
-                    [(ngModel)]="selectedTime"
-                    [ngxMatTimepicker]="pickerB"
-                    placeholder="16:00"
+                    [format]="24"
+                    formControlName="break_start"
+                    [ngxMatTimepicker]="pickerBreakStart"
+                    placeholder="Начало обеда"
                     readonly
                 />
                 <mat-icon 
                     matSuffix
-                    (click)="pickerB.open()"
+                    (click)="pickerBreakStart.open()"
                 >
                     watch_later
                 </mat-icon>
             </mat-form-field>
             <ngx-mat-timepicker 
                 color="accent"
-                #pickerB
-            ></ngx-mat-timepicker> -->
+                #pickerBreakStart
+            ></ngx-mat-timepicker>
+
+            <mat-form-field>
+                <input 
+                    matInput
+                    [format]="24"
+                    formControlName="break_end"
+                    [ngxMatTimepicker]="pickerBreakEnd"
+                    placeholder="Конец обеда"
+                    readonly
+                />
+                <mat-icon 
+                    matSuffix
+                    (click)="pickerBreakEnd.open()"
+                >
+                    watch_later
+                </mat-icon>
+            </mat-form-field>
+            <ngx-mat-timepicker 
+                color="accent"
+                #pickerBreakEnd
+            ></ngx-mat-timepicker>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Минимальное количество активных сотрудников</mat-label>
+                <input matInput formControlName="min_active">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Максимальная продолжительность обеда</mat-label>
+                <input matInput formControlName="break_max_duration">
+            </mat-form-field>
+
+            <mat-slide-toggle formControlName="remember_default_data">
+                Запомнить настройки смены
+            </mat-slide-toggle>
         </div>
     </div>
 

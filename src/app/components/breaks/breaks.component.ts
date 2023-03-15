@@ -40,7 +40,7 @@ export class BreaksComponent implements OnInit {
 
     openAddGroupDialog(): void {
         if(this.group) {
-            const dialogRef = this.dialog.open(AddBreakDialogComponent, {data: this.group.id});
+            const dialogRef = this.dialog.open(AddBreakDialogComponent, {data: this.group});
         
             dialogRef.afterClosed().subscribe(() => {
                 this.getBreaksList()
@@ -94,7 +94,7 @@ export class AddBreakDialogComponent implements OnInit {
         private fb: FormBuilder,
         private breakService: BreakService,
         private memberService: MemberService,
-        @Inject(MAT_DIALOG_DATA) public data: number,
+        @Inject(MAT_DIALOG_DATA) public data: IGroup,
     ) {}
 
     ngOnInit(): void {
@@ -104,49 +104,26 @@ export class AddBreakDialogComponent implements OnInit {
 
     initForm(): void {
         this.breakForm = this.fb.group({
-            group: this.data,
+            group: this.data.id,
             date: new Date(this.year, this.month, this.day),
-            break_start: null,
-            break_end: null,
-            break_max_duration: null,
-            min_active: null,
+            break_start: this.data.breaks_info.break_start.slice(0, -3),
+            break_end: this.data.breaks_info.break_end.slice(0, -3),
+            break_max_duration: this.data.breaks_info.break_max_duration,
+            min_active: this.data.breaks_info.min_active,
             members: null,
             all_group_members: true,
-            remember_default_data: null,
+            remember_default_data: true,
         })
     }
 
     submit(): void {
-        // this.breakService.addBreak(this.breakForm.value).subscribe()
-        // this.dialogRef.close();
-        console.log(this.breakForm.value)
+        this.breakService.addBreak(this.breakForm.value).subscribe()
+        this.dialogRef.close();
     }
 
     getMembersList(): void {
-        this.memberService.getMembersList(this.data, this.page, this.page_size).subscribe(res => {
+        this.memberService.getMembersList(this.data.id, this.page, this.page_size).subscribe(res => {
             this.membersList = res.results;
         })
     }
-
-    // selectMember(member: IMember, event: Event): void {
-    //     event.preventDefault();
-    //     this.selectedMembersList.push(member);
-    //     for (let i = 0; i < this.membersList.length; i++) {
-    //         if (this.membersList[i].id === member.id) {
-    //             this.membersList.splice(i, 1);
-    //             break;
-    //         }
-    //     }
-    // }
-
-    // deleteMember(member: IMember): void {
-    //     this.membersList.push(member);
-    //     for (let i = 0; i < this.selectedMembersList.length; i++) {
-    //         if (this.selectedMembersList[i].id === member.id) {
-    //             this.selectedMembersList.splice(i, 1);
-    //             break;
-    //         }
-    //     }
-
-    // }
 }
