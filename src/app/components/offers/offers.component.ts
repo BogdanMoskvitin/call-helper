@@ -15,18 +15,6 @@ export class OffersComponent implements OnInit, OnChanges {
     displayedColumns: string[] = ['user', 'org_accept', 'user_accept', 'created_at', 'accept', 'reject'];
     offersReceivedList: IOffer[] = [];
     offersSentList: IOffer[] = [];
-    // receivedFilters = {
-    //     all: true,
-    //     unknown: false,
-    //     accept: false,
-    //     reject: false,
-    // }
-    // sentFilters = {
-    //     all: true,
-    //     unknown: false,
-    //     accept: false,
-    //     reject: false,
-    // }
 
     @Input()
     organisation: IOrganisation | null = null;
@@ -76,42 +64,18 @@ export class OffersComponent implements OnInit, OnChanges {
                 this.offerService.getOffersReceivedList(this.organisation.id).subscribe(res => {
                     this.offersReceivedList = res
                 })
-                // this.receivedFilters = {
-                //     all: true,
-                //     unknown: false,
-                //     accept: false,
-                //     reject: false,
-                // }
             } else if(status == 'unknown') {
                 this.offerService.getOffersReceivedList(this.organisation.id, {param: 'decision', value: 'unknown'}).subscribe(res => {
                     this.offersReceivedList = res
                 })
-                // this.receivedFilters = {
-                //     all: false,
-                //     unknown: true,
-                //     accept: false,
-                //     reject: false,
-                // }
             } else if(status == 'accept') {
                 this.offerService.getOffersReceivedList(this.organisation.id, {param: 'decision', value: 'accept'}).subscribe(res => {
                     this.offersReceivedList = res
                 })
-                // this.receivedFilters = {
-                //     all: false,
-                //     unknown: false,
-                //     accept: true,
-                //     reject: false,
-                // }
             } else if(status == 'reject') {
                 this.offerService.getOffersReceivedList(this.organisation.id, {param: 'decision', value: 'reject'}).subscribe(res => {
                     this.offersReceivedList = res
                 })
-                // this.receivedFilters = {
-                //     all: false,
-                //     unknown: false,
-                //     accept: false,
-                //     reject: true,
-                // }
             }
         }
     }
@@ -122,42 +86,18 @@ export class OffersComponent implements OnInit, OnChanges {
                 this.offerService.getOffersSentList(this.organisation.id).subscribe(res => {
                     this.offersSentList = res
                 })
-                // this.sentFilters = {
-                //     all: true,
-                //     unknown: false,
-                //     accept: false,
-                //     reject: false,
-                // }
             } else if(status == 'unknown') {
                 this.offerService.getOffersSentList(this.organisation.id, {param: 'decision', value: 'unknown'}).subscribe(res => {
                     this.offersSentList = res
                 })
-                // this.sentFilters = {
-                //     all: false,
-                //     unknown: true,
-                //     accept: false,
-                //     reject: false,
-                // }
             } else if(status == 'accept') {
                 this.offerService.getOffersSentList(this.organisation.id, {param: 'decision', value: 'accept'}).subscribe(res => {
                     this.offersSentList = res
                 })
-                // this.sentFilters = {
-                //     all: false,
-                //     unknown: false,
-                //     accept: true,
-                //     reject: false,
-                // }
             } else if(status == 'reject') {
                 this.offerService.getOffersSentList(this.organisation.id, {param: 'decision', value: 'reject'}).subscribe(res => {
                     this.offersSentList = res
                 })
-                // this.sentFilters = {
-                //     all: false,
-                //     unknown: false,
-                //     accept: false,
-                //     reject: true,
-                // }
             }
         }
     }

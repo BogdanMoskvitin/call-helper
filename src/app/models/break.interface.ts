@@ -41,3 +41,28 @@ export interface IBreak {
         cancelled_pax: number;
     };
 }
+
+export interface IBreakRequest {
+    group: number;
+    date: string;
+    break_start: string;
+    break_end: string;
+    break_max_duration: number;
+    min_active: number;
+    members: number[];
+    all_group_members: boolean;
+    remember_default_data: boolean;
+}
+
+export interface IBreakResponse {
+    id: number;
+    group: number;
+    date: string;
+    break_start: string;
+    break_end: string;
+    break_max_duration: number;
+    min_active: number;
+    members: number[];
+    all_group_members: boolean;
+    remember_default_data: boolean;
+}

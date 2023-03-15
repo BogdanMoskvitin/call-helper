@@ -1,36 +1,49 @@
-<table mat-table [dataSource]="breaksList" class="mat-elevation-z8">
-    <!-- Date -->
-    <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef> Дата </th>
-        <td mat-cell *matCellDef="let element" class="table__link" [routerLink]="['../../break', element.id]"> {{element.date | date: 'dd.MM.YYYY hh:mm'}} </td>
-    </ng-container>
+<div class="container">
+    <button mat-stroked-button color="primary" (click)="openAddGroupDialog()" *ngIf="group?.can_manage">Создать смену</button>
 
-    <!-- Time -->
-    <ng-container matColumnDef="time">
-        <th mat-header-cell *matHeaderCellDef> Время интервала </th>
-        <td mat-cell *matCellDef="let element"> {{element.break_start}} - {{element.break_end}} </td>
-    </ng-container>
+    <h3>Список смен</h3>
 
-    <!-- Break max duration -->
-    <ng-container matColumnDef="break_max_duration">
-        <th mat-header-cell *matHeaderCellDef> Макс. время обеда </th>
-        <td mat-cell *matCellDef="let element"> {{element.break_max_duration}} мин. </td>
-    </ng-container>
+    <mat-button-toggle-group>
+        <mat-button-toggle (click)="filter('active')">Активные</mat-button-toggle>
+        <mat-button-toggle (click)="filter('future')">Предстоящие</mat-button-toggle>
+        <mat-button-toggle (click)="filter('archive')">Архив</mat-button-toggle>
+        <mat-button-toggle checked (click)="filter('')">Все</mat-button-toggle>
+    </mat-button-toggle-group>
 
-    <!-- Min active -->
-    <ng-container matColumnDef="min_active">
-        <th mat-header-cell *matHeaderCellDef> Мин число активных </th>
-        <td mat-cell *matCellDef="let element"> {{element.min_active}} мин. </td>
-    </ng-container>
+    <table mat-table [dataSource]="breaksList" class="mat-elevation-z8">
+        <!-- Date -->
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Дата </th>
+            <td mat-cell *matCellDef="let element" class="table__link" [routerLink]="['../../break', element.id]"> {{element.date | date: 'dd.MM.YYYY hh:mm'}} </td>
+        </ng-container>
 
-    <!-- Stats -->
-    <ng-container matColumnDef="stats">
-        <th mat-header-cell *matHeaderCellDef> Статистика заявок </th>
-        <td mat-cell *matCellDef="let element"> Статистика заявок </td>
-    </ng-container>
+        <!-- Time -->
+        <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef> Время интервала </th>
+            <td mat-cell *matCellDef="let element"> {{element.break_start}} - {{element.break_end}} </td>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+        <!-- Break max duration -->
+        <ng-container matColumnDef="break_max_duration">
+            <th mat-header-cell *matHeaderCellDef> Макс. время обеда </th>
+            <td mat-cell *matCellDef="let element"> {{element.break_max_duration}} мин. </td>
+        </ng-container>
 
-<h3 *ngIf="!breaksList.length">Список пуст</h3>
+        <!-- Min active -->
+        <ng-container matColumnDef="min_active">
+            <th mat-header-cell *matHeaderCellDef> Мин число активных </th>
+            <td mat-cell *matCellDef="let element"> {{element.min_active}} мин. </td>
+        </ng-container>
+
+        <!-- Stats -->
+        <ng-container matColumnDef="stats">
+            <th mat-header-cell *matHeaderCellDef> Статистика заявок </th>
+            <td mat-cell *matCellDef="let element"> Статистика заявок </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <h3 *ngIf="!breaksList.length">Список пуст</h3>
+</div>

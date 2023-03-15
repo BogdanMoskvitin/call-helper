@@ -30,8 +30,11 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ChartComponent } from './components/chart/chart.component';
 import { GroupComponent } from './components/group/group.component';
 import { MembersComponent } from './components/members/members.component';
-import { BreaksComponent } from './components/breaks/breaks.component';
+import { AddBreakDialogComponent, BreaksComponent } from './components/breaks/breaks.component';
 import { BreakComponent } from './components/break/break.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
     declarations: [
@@ -55,6 +58,7 @@ import { BreakComponent } from './components/break/break.component';
         MembersComponent,
         BreaksComponent,
         BreakComponent,
+        AddBreakDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -75,8 +79,14 @@ import { BreakComponent } from './components/break/break.component';
         MatSelectModule,
         MatAutocompleteModule,
         MatButtonToggleModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSlideToggleModule,
     ],
-    providers: [ { provide: HTTP_INTERCEPTORS, multi: true, useClass: TokenInterceptor }, ],
+    providers: [ 
+        { provide: HTTP_INTERCEPTORS, multi: true, useClass: TokenInterceptor }, 
+        { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -18,10 +18,10 @@
 </mat-card>
 
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+    <mat-tab label="Смены">
+        <app-breaks [group]="group"></app-breaks>
+    </mat-tab>
     <mat-tab label="Участники">
         <app-members [idGroup]="id"></app-members>
-    </mat-tab>
-    <mat-tab label="Смены">
-        <app-breaks [idGroup]="id"></app-breaks>
     </mat-tab>
 </mat-tab-group>
