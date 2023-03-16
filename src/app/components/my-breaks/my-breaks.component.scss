@@ -1,0 +1,25 @@
+.container {
+    margin-top: 20px;
+}
+
+h3 {
+    margin: 10px 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.table__link {
+    color: #3f51b5;
+    cursor: pointer;
+}
+
+mat-button-toggle-group {
+    margin-bottom: 20px;
+}
+
+mat-slide-toggle {
+    margin-bottom: 20px;
+}

@@ -4,6 +4,8 @@ import { BreakComponent } from './components/break/break.component';
 import { GroupComponent } from './components/group/group.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
+import { MyBreaksComponent } from './components/my-breaks/my-breaks.component';
+import { MyGroupsComponent } from './components/my-groups/my-groups.component';
 import { OrganisationComponent } from './components/organisation/organisation.component';
 import { OrganisationsComponent } from './components/organisations/organisations.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -19,6 +21,8 @@ const routes: Routes = [
 	{ path: 'organisation/:id', component: OrganisationComponent },
 	{ path: 'group/:id', component: GroupComponent },
 	{ path: 'break/:id', component: BreakComponent },
+	{ path: 'my-groups', component: MyGroupsComponent },
+	{ path: 'my-breaks', component: MyBreaksComponent },
 ];
 
 @NgModule({

@@ -19,6 +19,14 @@ export class GroupService {
         return this.http.get<IGroup[]>(environment.api + 'organisations/groups/?organisation=' + idOrganisation, {params: queryParams});
     }
 
+    getMyGroupsList(filter?: {param: string, value: boolean}): Observable<IGroup[]> {
+        let queryParams = {};
+        if(filter != undefined) {
+            queryParams = new HttpParams().append(filter.param, filter.value);
+        }
+        return this.http.get<IGroup[]>(environment.api + 'organisations/groups/', {params: queryParams});
+    }
+
     getGroup(idGroup: number): Observable<IGroup> {
         return this.http.get<IGroup>(environment.api + 'organisations/groups/' + idGroup + '/');
     }

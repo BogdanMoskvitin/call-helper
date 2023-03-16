@@ -27,6 +27,21 @@ export class BreakService {
         return this.http.get<IBreaksList>(environment.api + 'breaks/replacements/?group=' + idGroup, {params: queryParams});
     }
 
+    getMyBreaksList(
+        page: number, 
+        page_size: number, 
+        filter?: {param: string, value: string}
+    ): Observable<IBreaksList> {
+        let queryParams = new HttpParams();
+        queryParams = queryParams
+            .set('page', page)
+            .set('page_size', page_size);
+        if(filter != undefined) {
+            queryParams = queryParams.set(filter.param, filter.value)
+        }
+        return this.http.get<IBreaksList>(environment.api + 'breaks/replacements/', {params: queryParams});
+    }
+
     getBreak(idBreak: number): Observable<IBreak> {
         return this.http.get<IBreak>(environment.api + 'breaks/replacements/' + idBreak + '/');
     }
