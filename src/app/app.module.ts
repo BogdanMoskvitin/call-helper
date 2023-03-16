@@ -36,6 +36,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -88,6 +89,7 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     providers: [ 
         { provide: HTTP_INTERCEPTORS, multi: true, useClass: TokenInterceptor }, 
         { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' },
+        DatePipe,
     ],
     bootstrap: [AppComponent],
 })

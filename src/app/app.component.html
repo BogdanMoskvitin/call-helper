@@ -25,6 +25,10 @@
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer opened #drawer class="example-sidenav" mode="side">
         <div>
+            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/organisations']">Организации</a>
+        </div>
+
+        <div>
             <a class="link" mat-button routerLinkActive="active" [routerLink]="['/main']">Главная</a>
         </div>
 

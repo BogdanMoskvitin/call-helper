@@ -5,6 +5,7 @@ import { GroupComponent } from './components/group/group.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { OrganisationComponent } from './components/organisation/organisation.component';
+import { OrganisationsComponent } from './components/organisations/organisations.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 
@@ -14,6 +15,7 @@ const routes: Routes = [
 	{ path: 'login', component: LoginComponent },
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'profile', component: ProfileComponent },
+	{ path: 'organisations', component: OrganisationsComponent },
 	{ path: 'organisation/:id', component: OrganisationComponent },
 	{ path: 'group/:id', component: GroupComponent },
 	{ path: 'break/:id', component: BreakComponent },

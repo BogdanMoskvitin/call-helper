@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -95,6 +96,7 @@ export class AddBreakDialogComponent implements OnInit {
         private breakService: BreakService,
         private memberService: MemberService,
         @Inject(MAT_DIALOG_DATA) public data: IGroup,
+        private datePipe: DatePipe,
     ) {}
 
     ngOnInit(): void {
@@ -117,6 +119,10 @@ export class AddBreakDialogComponent implements OnInit {
     }
 
     submit(): void {
+        if(this.breakForm.value.members == null) {
+            this.breakForm.controls['members'].setValue([]);
+        }
+        this.breakForm.controls['date'].setValue(this.datePipe.transform(this.breakForm.value.date, 'yyyy-MM-dd'));
         this.breakService.addBreak(this.breakForm.value).subscribe()
         this.dialogRef.close();
     }
