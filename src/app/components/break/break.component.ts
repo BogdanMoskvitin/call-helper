@@ -70,7 +70,7 @@ export class BreakComponent implements OnInit {
 @Component({
     selector: 'break-dialog',
     templateUrl: './break-dialog.html',
-    styleUrls: ['./breaks.component.scss']
+    styleUrls: ['./break.component.scss']
 })
 export class BreakDialogComponent implements OnInit {
     breakForm: FormGroup = new FormGroup({});
