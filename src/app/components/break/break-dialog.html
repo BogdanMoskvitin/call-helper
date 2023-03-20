@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>Резерв обеда</h1>
+
+<p mat-dialog-content>Перед выбором обеденного перерыва изучите временные интервалы, максимальную длительность обеда, минимальное число активных сотрудников и сверьте данные с расписанием обедов, чтобы выбрать свободный промежуток времени для Вашего обеденного перерыва.</p>
+
+<form [formGroup]="breakForm" (submit)="submit()">
+    <div mat-dialog-content>
+        <div class="form">
+            <mat-form-field>
+                <input 
+                    matInput
+                    [format]="24"
+                    formControlName="break_start"
+                    [ngxMatTimepicker]="pickerBreakStart"
+                    placeholder="Начало обеда"
+                    readonly
+                />
+                <mat-icon 
+                    matSuffix
+                    (click)="pickerBreakStart.open()"
+                >
+                    watch_later
+                </mat-icon>
+            </mat-form-field>
+            <ngx-mat-timepicker 
+                color="accent"
+                #pickerBreakStart
+            ></ngx-mat-timepicker>
+
+            <mat-form-field>
+                <input 
+                    matInput
+                    [format]="24"
+                    formControlName="break_end"
+                    [ngxMatTimepicker]="pickerBreakEnd"
+                    placeholder="Конец обеда"
+                    readonly
+                />
+                <mat-icon 
+                    matSuffix
+                    (click)="pickerBreakEnd.open()"
+                >
+                    watch_later
+                </mat-icon>
+            </mat-form-field>
+            <ngx-mat-timepicker 
+                color="accent"
+                #pickerBreakEnd
+            ></ngx-mat-timepicker>
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Отмена</button>
+        <button mat-stroked-button color="primary" type="submit" [disabled]="breakForm.invalid">Занять</button>
+    </div>
+</form>

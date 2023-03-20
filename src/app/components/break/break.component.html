@@ -1,22 +1,194 @@
-<mat-card class="example-card">
-    <mat-card-header>
-        <div class="flex">
-            <p class="title">
-                Дата {{ break?.date | date: 'dd.MM.YYYY hh:mm' }}
+<div class="cards">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div class="flex">
+                <p class="title">
+                    Смена на {{ break?.date | date: 'dd.MM.YYYY hh:mm' }}
+                </p>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Организация: 
+                <span
+                    class="table__link" 
+                    [routerLink]="['../../organisation', break?.group?.organisation?.id]"
+                >
+                    {{ break?.group?.organisation?.name }}
+                </span>
             </p>
-    
-            <button mat-stroked-button color="primary" (click)="openEditBreakDialog()">
-                Редактировать
-            </button>
-        </div>
-    </mat-card-header>
-    <mat-card-content>
-        <p>Группа: {{ break?.group?.name }}</p>
-        <p>Организация: {{ break?.group?.organisation?.name }}</p>
-        <p>Руководитель: {{ break?.group?.manager?.user?.full_name }}</p>
-        <p>Должность: {{ break?.group?.manager?.position?.name }}</p>
-        <p>Зарегестрирована: {{ break?.break_start }} - {{ break?.break_end }}</p>
-    </mat-card-content>
-</mat-card>
+
+            <p>
+                Группа: 
+                <span
+                    class="table__link" 
+                    [routerLink]="['../../group', break?.group?.id]"
+                >
+                    {{ break?.group?.name }}
+                </span>
+            </p>
+
+            <p>Менеджер: {{ break?.group?.manager?.user?.full_name }}</p>
+            <p>Обеденный перерыв: {{ break?.break_start }} - {{ break?.break_end }}</p>
+            <p>Макс. продолжительность: {{ break?.break_max_duration }}</p>
+            <p>Мин. активность: {{ break?.min_active }}</p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div class="flex">
+                <p class="title">Действия</p>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="flex">
+                <p>Смена:</p>
+
+                <button 
+                    mat-stroked-button 
+                    class="green" 
+                    (click)="changeStatusMember('online')" 
+                    *ngIf="break?.actions?.replacement_button == 'online'"
+                >
+                    Начать смену
+                </button>
+
+                <button 
+                    mat-stroked-button 
+                    color="warn" 
+                    (click)="changeStatusMember('offline')" 
+                    *ngIf="break?.actions?.replacement_button == 'offline'"
+                >
+                    Завершить смену
+                </button>
+            </div>
+
+            <div class="flex">
+                <p>Обед:</p>
+
+                <button 
+                    *ngIf="break?.actions?.break_button == 'comming'" 
+                    mat-stroked-button 
+                    disabled
+                >
+                    Начать обед
+                </button>
+
+                <button 
+                    *ngIf="break?.actions?.break_button == 'start'" 
+                    mat-stroked-button 
+                    class="orange" 
+                    (click)="changeStatusBreak('break_start')"
+                >
+                    Начать обед
+                </button>
+
+                <button 
+                    *ngIf="break?.actions?.break_button == 'finish'" 
+                    mat-stroked-button 
+                    color="warn" 
+                    (click)="changeStatusBreak('break_end')"
+                >
+                    Завершить обед
+                </button>
+
+                <button 
+                    *ngIf="break?.actions?.break_button == 'create'" 
+                    mat-stroked-button 
+                    color="green" 
+                    (click)="openCreateBreakDialog('create')"
+                >
+                    Выбрать
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div class="flex">
+                <p class="title">Резерв обеда</p>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Начало обеда: 
+                <span>{{ break?.breaks?.info?.break_start }}</span>
+                <span *ngIf="!break?.breaks?.info?.break_start">Нет данных</span>
+            </p>
+
+            <p>Конец обеда: 
+                <span>{{ break?.breaks?.info?.break_end }}</span>
+                <span *ngIf="!break?.breaks?.info?.break_end">Нет данных</span>
+            </p>
+            <div class="flex">
+                <button 
+                    *ngIf="break?.breaks?.button == 'create'" 
+                    mat-stroked-button 
+                    color="green" 
+                    (click)="openCreateBreakDialog('create')"
+                >
+                    Выбрать
+                </button>
+
+                <button 
+                    *ngIf="break?.breaks?.button == 'update'" 
+                    mat-stroked-button 
+                    color="orange" 
+                    (click)="openCreateBreakDialog('update')"
+                >
+                    Изменить
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div class="flex">
+                <p class="title">Статистика</p>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Всего участников: {{ break?.stats?.members_count }}</p>
+            <p>Обед забронировали: {{ break?.stats?.breaks_count }}</p>
+            <p>Участников онлайн: {{ break?.stats?.members_online }}</p>
+            <p>Участников офлайн: {{ break?.stats?.members_offline }}</p>
+            <p>Участников на обеде: {{ break?.stats?.members_offline }}</p>
+            <p>Участников недоступных: {{ break?.stats?.members_busy }}</p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div class="flex">
+                <p class="title">Ваша активность</p>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Время начала смены: {{ break?.personal_stats?.time_online }}</p>
+            <p>До перерыва осталось: {{ break?.personal_stats?.time_until_break }}</p>
+            <p>Время начала перерыва: {{ break?.personal_stats?.time_break_start }}</p>
+            <p>Время окончания перерыва: {{ break?.personal_stats?.time_break_end }}</p>
+            <p>Время завершения смены: {{ break?.personal_stats?.time_offline }}</p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div class="flex">
+                <p class="title">Участники смены</p>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <p 
+                *ngFor="let member of break?.members" 
+                [style.background]="member.status.color"
+            >
+                {{ member.full_name }}
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>
 
 <app-chart [data]="schedule"></app-chart>

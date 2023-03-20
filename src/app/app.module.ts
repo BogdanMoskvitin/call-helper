@@ -31,7 +31,7 @@ import { ChartComponent } from './components/chart/chart.component';
 import { GroupComponent } from './components/group/group.component';
 import { MembersComponent } from './components/members/members.component';
 import { AddBreakDialogComponent, BreaksComponent } from './components/breaks/breaks.component';
-import { BreakComponent } from './components/break/break.component';
+import { BreakComponent, BreakDialogComponent } from './components/break/break.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -65,6 +65,7 @@ import { MyBreaksComponent } from './components/my-breaks/my-breaks.component';
         AddBreakDialogComponent,
         MyGroupsComponent,
         MyBreaksComponent,
+        BreakDialogComponent,
     ],
     imports: [
         BrowserModule,
