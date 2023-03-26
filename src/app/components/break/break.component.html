@@ -186,6 +186,7 @@
                 [style.background]="member.status.color"
             >
                 {{ member.full_name }}
+                <span *ngIf="member.description">({{ member.description }})</span>
             </p>
         </mat-card-content>
     </mat-card>

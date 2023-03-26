@@ -8,7 +8,7 @@ import { BreakService } from 'src/app/services/break.service';
     styleUrls: ['./my-breaks.component.scss']
 })
 export class MyBreaksComponent implements OnInit {
-    displayedColumns: string[] = ['date', 'time', 'break_max_duration', 'group', 'organisation', 'min_active', 'stats'];
+    displayedColumns: string[] = ['date', 'time', 'break_max_duration', 'group', 'organisation', 'min_active'];
     breaksList: IBreak[] = [];
     page: number = 1;
     page_size: number = 10;

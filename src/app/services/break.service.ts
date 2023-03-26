@@ -55,24 +55,18 @@ export class BreakService {
     }
 
     changeStatusMember(idBreak: number, status: string): Observable<null> {
-        let queryParams = new HttpParams();
-        queryParams = queryParams.set('status', status);
-
-        return this.http.patch<null>(environment.api + 'breaks/replacements/' + idBreak + '/member/', {params: queryParams});
+        return this.http.patch<null>(environment.api + 'breaks/replacements/' + idBreak + '/member/', {status});
     }
 
     changeStatusBreak(idBreak: number, status: string): Observable<null> {
-        let queryParams = new HttpParams();
-        queryParams = queryParams.set('status', status);
-
-        return this.http.patch<null>(environment.api + 'breaks/replacements/' + idBreak + '/break/', {params: queryParams});
+        return this.http.patch<null>(environment.api + 'breaks/replacements/' + idBreak + '/break/', {status});
     }
 
     createBreak(data: {break_start: string, break_end: string, id: number}): Observable<null> {
-        return this.http.post<null>(environment.api + 'breaks/replacements/' + data.id + '/break/', data);
+        return this.http.post<null>(environment.api + 'breaks/replacements/' + data.id + '/break/', {break_start: data.break_start, break_end: data.break_end});
     }
 
     updateBreak(data: {break_start: string, break_end: string, id: number}): Observable<null> {
-        return this.http.put<null>(environment.api + 'breaks/replacements/' + data.id + '/break/', data);
+        return this.http.put<null>(environment.api + 'breaks/replacements/' + data.id + '/break/', {break_start: data.break_start, break_end: data.break_end});
     }
 }

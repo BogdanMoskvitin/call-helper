@@ -45,12 +45,6 @@
             <td mat-cell *matCellDef="let element"> {{element.min_active}} мин. </td>
         </ng-container>
 
-        <!-- Stats -->
-        <ng-container matColumnDef="stats">
-            <th mat-header-cell *matHeaderCellDef> Статистика заявок </th>
-            <td mat-cell *matCellDef="let element"> Статистика заявок </td>
-        </ng-container>
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
