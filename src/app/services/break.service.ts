@@ -67,6 +67,6 @@ export class BreakService {
     }
 
     updateBreak(data: {break_start: string, break_end: string, id: number}): Observable<null> {
-        return this.http.put<null>(environment.api + 'breaks/replacements/' + data.id + '/break/', {break_start: data.break_start, break_end: data.break_end});
+        return this.http.patch<null>(environment.api + 'breaks/replacements/' + data.id + '/break/', {break_start: data.break_start, break_end: data.break_end});
     }
 }
