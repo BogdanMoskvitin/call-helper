@@ -12,6 +12,10 @@
 
     <span class="example-spacer"></span>
 
+    <button mat-button *ngIf="!isAuthenticated" (click)="logout()">Войти</button>
+
+    <button mat-button *ngIf="isAuthenticated" (click)="logout()">Выйти</button>
+
     <button 
         mat-icon-button     
         class="example-icon"                        
@@ -24,32 +28,28 @@
 
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer opened #drawer class="example-sidenav" mode="side">
+        <p class="title">Основное</p>
+
         <div>
-            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/organisations']">Организации</a>
+            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/my-breaks']">Мои смены</a>
         </div>
 
         <div>
-            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/my-groups']">Группы</a>
+            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/my-groups']">Мои группы</a>
         </div>
 
         <div>
-            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/my-breaks']">Смены</a>
+            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/organisations']">Мои организации</a>
+        </div>
+
+        <p class="title">Профиль</p>
+
+        <div>
+            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/organisations']">Приглашения</a>
         </div>
 
         <div>
-            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/main']">Главная</a>
-        </div>
-
-        <div>
-            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/login']">Login</a>
-        </div>
-
-        <div>
-            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/register']">Register</a>
-        </div>
-
-        <div>
-            <a class="link" mat-button (click)="logout()">Logout</a>
+            <a class="link" mat-button routerLinkActive="active" [routerLink]="['/profile']">Настройки</a>
         </div>
     </mat-drawer>
   

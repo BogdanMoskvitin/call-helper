@@ -184,6 +184,7 @@
             <p 
                 *ngFor="let member of break?.members" 
                 [style.background]="member.status.color"
+                class="member"
             >
                 {{ member.full_name }}
                 <span *ngIf="member.description">({{ member.description }})</span>

@@ -8,6 +8,8 @@ import { AuthService } from './services/auth.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+    isAuthenticated: boolean = false;
+
     constructor(
         private authService: AuthService, 
         private router: Router,
@@ -18,6 +20,8 @@ export class AppComponent implements OnInit {
         if(potentialToken !== null) {
             this.authService.setToken(potentialToken);
         }
+
+        this.isAuthenticated = this.authService.isAuthenticated();
     }
 
     logout() {

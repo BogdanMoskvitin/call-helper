@@ -34,6 +34,10 @@
             </mat-error>
         </mat-form-field>
 
-        <button mat-stroked-button color="primary" type="submit" [disabled]="loginForm.invalid">Войти</button>
+        <button mat-stroked-button class="green" type="submit" [disabled]="loginForm.invalid">Войти</button>
+
+        <p class="subtitle">ИЛИ</p>
+
+        <button mat-stroked-button type="button" [routerLink]="['/register']">Зарегестрироваться</button>
     </form>
 </div>
