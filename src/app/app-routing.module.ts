@@ -10,6 +10,7 @@ import { OrganisationComponent } from './components/organisation/organisation.co
 import { OrganisationsComponent } from './components/organisations/organisations.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { OrganisationsOffersComponent } from './components/organisations-offers/organisations-offers.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'my-breaks', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
 	{ path: 'break/:id', component: BreakComponent },
 	{ path: 'my-groups', component: MyGroupsComponent },
 	{ path: 'my-breaks', component: MyBreaksComponent },
+	{ path: 'organisations-offers', component: OrganisationsOffersComponent },
 ];
 
 @NgModule({

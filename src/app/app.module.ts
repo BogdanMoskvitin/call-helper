@@ -39,6 +39,7 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 import { DatePipe } from '@angular/common';
 import { MyGroupsComponent } from './components/my-groups/my-groups.component';
 import { MyBreaksComponent } from './components/my-breaks/my-breaks.component';
+import { AddOrganisationsOffersDialogComponent, OrganisationsOffersComponent } from './components/organisations-offers/organisations-offers.component';
 
 @NgModule({
     declarations: [
@@ -66,6 +67,8 @@ import { MyBreaksComponent } from './components/my-breaks/my-breaks.component';
         MyGroupsComponent,
         MyBreaksComponent,
         BreakDialogComponent,
+        OrganisationsOffersComponent,
+        AddOrganisationsOffersDialogComponent,
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,87 @@
+<div class="container">
+    <button mat-stroked-button color="primary" (click)="openAddOrganisationsOffersDialog()">Создать заявку</button>
+
+    <h3>Список заявок</h3>
+
+    <div class="container">
+        <mat-button-toggle-group>
+            <mat-button-toggle checked (click)="filter('all')">Все</mat-button-toggle>
+            <mat-button-toggle (click)="filter('unknown')">На рассмотрении</mat-button-toggle>
+            <mat-button-toggle (click)="filter('accept')">Принятые</mat-button-toggle>
+            <mat-button-toggle (click)="filter('reject')">Отклоненные</mat-button-toggle>
+        </mat-button-toggle-group>
+        
+        <table mat-table [dataSource]="organisationsOffersList" class="mat-elevation-z8">
+            <!-- Organisation -->
+            <ng-container matColumnDef="organisation">
+                <th mat-header-cell *matHeaderCellDef> Организация </th>
+                <td mat-cell *matCellDef="let element" class="table__link"> {{element.organisation.name}} </td>
+            </ng-container>
+        
+            <!-- Org accept -->
+            <ng-container matColumnDef="org_accept">
+                <th mat-header-cell *matHeaderCellDef> Решение организации </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <span *ngIf="element.org_accept == null">На рассмотрении</span>
+                    <span *ngIf="element.org_accept == true">Согласие</span>
+                    <span *ngIf="element.org_accept == false">Отказ</span>
+                </td>
+            </ng-container>
+    
+            <!-- User accept -->
+            <ng-container matColumnDef="user_accept">
+                <th mat-header-cell *matHeaderCellDef> Решение пользователя </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <span *ngIf="element.user_accept == null">На рассмотрении</span>
+                    <span *ngIf="element.user_accept == true">Согласие</span>
+                    <span *ngIf="element.user_accept == false">Отказ</span>
+                </td>
+            </ng-container>
+        
+            <!-- Created at -->
+            <ng-container matColumnDef="created_at">
+                <th mat-header-cell *matHeaderCellDef> Дата создания </th>
+                <td mat-cell *matCellDef="let element"> {{element.created_at | date: 'dd.MM.YYYY hh:mm'}} </td>
+            </ng-container>
+    
+            <!-- Accept -->
+            <ng-container matColumnDef="accept">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <button 
+                        mat-stroked-button 
+                        [disabled]="!element.can_accept"
+                        [ngClass]="{'green': element.can_accept}"
+                        (click)="acceptOffer(element.id)"
+                    >
+                        Принять
+                    </button>
+                </td>
+            </ng-container>
+
+            <!-- Reject -->
+            <ng-container matColumnDef="reject">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <button 
+                        mat-stroked-button 
+                        [disabled]="!element.can_reject"
+                        color="warn"
+                        (click)="rejectOffer(element.id)"
+                    >
+                        Отклонить
+                    </button>
+                </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr 
+                mat-row 
+                *matRowDef="let row; columns: displayedColumns;" 
+                [ngClass]="{'green': row.can_manage, 'blue': row.is_member}"
+            ></tr>
+        </table>
+        
+        <h3 *ngIf="!organisationsOffersList.length">Список пуст</h3>
+    </div>
+</div>
